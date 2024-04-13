@@ -3,8 +3,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://canvas-gauges.com/download/latest/all/gauge.min.js"></script>
+    <script>
+        function drawGauge() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            var temp = urlParams.get('temp');
+            var gauge = new LinearGauge({
+                renderTo: document.createElement('canvas'),
+                width: 100,
+                height: 500,
+                value: temp
+            });
+            document.body.appendChild(gauge.options.renderTo);
+            gauge.draw();
+        }
+    </script>
 </head>
-<body>
-    <h1>Om Shri Ganeshaya Namah</h1>
+<body onload="drawGauge()">
 </body>
 </html>
